@@ -1,0 +1,49 @@
+#include<iostream>
+using namespace std;
+
+// Iterative Binary Search
+int binarySearch(int arr[], int n, int target)
+{
+    int left = 0;
+    int right = n - 1;
+
+    while(left <= right)
+    {
+        int mid = left + (right - left) / 2;
+
+        if(arr[mid] == target)
+        {
+            return mid;
+        }
+        else if(arr[mid] > target)
+        {
+            right = mid - 1;
+        }
+        else
+        {
+            left = mid + 1;
+        }
+    }
+
+    return -1;
+}
+
+int main()
+{
+    int arr[] = {2,4,6,8,10};
+    int n = 5;
+    int target = 8;
+
+    int result = binarySearch(arr,n,target);
+
+    if(result != -1)
+    {
+        cout << "Element found at index: " << result;
+    }
+    else
+    {
+        cout << "Element not found!!";
+    }
+
+    return 0;
+}
